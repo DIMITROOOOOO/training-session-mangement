@@ -1,0 +1,63 @@
+<app-nav></app-nav>
+<div class="container mt-4">
+  @if (isLoading) {
+    <div class="text-center">
+      <div class="spinner-border text-primary" role="status">
+        <span class="visually-hidden">Chargement...</span>
+      </div>
+    </div>
+  } @else if (error) {
+    <div class="alert alert-danger">
+      {{ error }}
+    </div>
+  } @else if (formation) {
+    <div class="card">
+      <div class="card-header bg-primary text-white">
+        <h2 class="mb-0">{{ formation.titre }}</h2>
+      </div>
+      
+      <div class="card-body">
+        <div class="mb-4">
+          <h4 class="border-bottom pb-2">Description</h4>
+          <p>{{ formation.description }}</p>
+        </div>
+        
+        <div class="mb-4">
+          <h4 class="border-bottom pb-2">Informations générales</h4>
+          <ul class="list-unstyled">
+            <li class="mb-2">
+              <i class="bi bi-clock me-2"></i>
+              <strong>Durée:</strong> {{ formation.duree }} heures
+            </li>
+            <li class="mb-2">
+              <i class="bi bi-diagram-3 me-2"></i>
+              <strong>Niveau:</strong> {{ formation.niveau }}
+            </li>
+          </ul>
+        </div>
+        
+        @if (formation.categories.length) {
+          <div class="mb-4">
+            <h4 class="border-bottom pb-2">Catégories</h4>
+            <div class="d-flex flex-wrap gap-2">
+              @for (categorie of formation.categories; track categorie) {
+                <span class="badge bg-primary">{{ categorie }}</span>
+              }
+            </div>
+          </div>
+        }
+        
+        @if (formation.tags.length) {
+          <div class="mb-4">
+            <h4 class="border-bottom pb-2">Tags</h4>
+            <div class="d-flex flex-wrap gap-2">
+              @for (tag of formation.tags; track tag) {
+                <span class="badge bg-secondary">{{ tag }}</span>
+              }
+            </div>
+          </div>
+        }
+      </div>
+    </div>
+  }
+</div>

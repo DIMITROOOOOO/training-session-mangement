@@ -1,0 +1,61 @@
+{
+  "Session": [
+    {
+      "id": 1,
+      "titre": "Formation Angular",
+      "description": "Formation complete sur Angular",
+      "duree": 35,
+      "programme": "Programme detaillé...",
+      "niveau": "Intermediaire",
+      "tags": ["Frontend", "Angular", "TypeScript"],
+      "categories": ["Développement Web"]
+    },
+    {
+      "id": 2,
+      "titre": "Formation php",
+      "description": "Formation complete sur php",
+      "duree": 35,
+      "programme": "Programme detaillé...",
+      "niveau": "Intermediaire",
+      "tags": ["backend", "php"],
+      "categories": ["Développement Web coter serveur"]
+    }
+  ],
+  "Sessionformation": [
+    {
+      "id": 1,
+      "formation": {
+        "id": 1,
+        "titre": "Formation Angular"
+      },
+      "formateurs": [
+        {
+          "id": 1,
+          "nom": "Dupont",
+          "prenom": "Jean"
+        }
+      ],
+      "candidats": [],
+      "dateDebut": "2024-01-15",
+      "dateFin": "2024-01-20",
+      "description": "Session de janvier"
+    }, {
+      "id": 2,
+      "formation": {
+        "id": 2,
+        "titre": "Formation php "
+      },
+      "formateurs": [
+        {
+          "id": 2,
+          "nom": "cherif",
+          "prenom": "nithal"
+        }
+      ],
+      "candidats": [],
+      "dateDebut": "2024-02-15",
+      "dateFin": "2024-02-20",
+      "description": "Session de fivrier"
+    }
+  ]
+}

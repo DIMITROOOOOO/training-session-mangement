@@ -1,0 +1,43 @@
+<app-nav></app-nav>
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-md-12">
+      <h2 class="text-center">Nos Programmes de Formation</h2>
+      <p class="lead text-center">Découvrez nos formations adaptées à différents niveaux et secteurs d'activité.</p>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12">
+      <h3>Catégories de Formations</h3>
+      <ul class="list-group">
+        @for (category of categories; track category) {
+          <li class="list-group-item">
+            {{ category }}
+          </li>
+        }
+      </ul>
+    </div>
+  </div>
+
+  <div class="row mt-4">
+    <div class="col-md-12">
+      <h3>Nos Formations</h3>
+      <div class="row">
+        @for (formation of formations; track formation.id) {
+          <div class="col-md-4">
+            <div class="card mb-3">
+              <div class="card-body">
+                <h5 class="card-title">{{ formation.titre }}</h5>
+                <p class="card-text">{{ formation.description }}</p>
+                <a class="btn btn-primary mt-2" [routerLink]="['/detail', formation.id]">Voir le programme</a>
+              </div>
+            </div>
+           
+          </div>
+        }
+      </div>
+    </div>
+  </div>
+</div>
+ 

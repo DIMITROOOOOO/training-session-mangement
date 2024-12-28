@@ -1,0 +1,39 @@
+<app-nav></app-nav>
+<div class="container mt-4">
+  <h2 class="text-center">Rechercher une formation</h2>
+  
+  <div class="row">
+    <div class="col-md-12">
+      <input type="text" class="form-control" placeholder="Entrez un mot-clé..." [(ngModel)]="searchKeyword" (input)="searchFormations()" />
+    </div>
+  </div>
+
+  <div class="row mt-4">
+    @if (searchResults.length > 0) {
+      <div class="col-md-12">
+        <h3>Résultats de recherche</h3>
+        <div class="row">
+          @for (formation of searchResults; track formation.id) {
+            <div class="col-md-4">
+              <div class="card mb-3">
+                <div class="card-body">
+                  <h5 class="card-title">{{ formation.titre }}</h5>
+                  <p class="card-text">{{ formation.description }}</p>
+                  <a class="btn btn-primary mt-2" [routerLink]="['/detail', formation.id]">
+                    Voir le programme
+                  </a>
+                </div>
+              </div>
+            </div>
+          }
+        </div>
+      </div>
+    } @else if (searchKeyword) {
+      <div class="col-md-12">
+        <p class="text-center">
+          Aucune formation trouvée pour le mot-clé "{{ searchKeyword }}"
+        </p>
+      </div>
+    }
+  </div>
+</div>
