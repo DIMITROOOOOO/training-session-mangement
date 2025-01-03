@@ -1,1 +1,79 @@
-<p>gestion-formation works!</p>
+<div class="container mt-4">
+    <h2>Gestion des Formations</h2>
+    <ul class="list-group">
+      @for (formation of formations; track formation.id) {
+        <li class="list-group-item">
+          <p>{{ formation.titre }}</p>
+          <p>Description: {{ formation.description }}</p>
+          <p>Durée: {{ formation.duree }} heures</p>
+          <p>Programme: {{ formation.programme }}</p>
+          <p>Niveau: {{ formation.niveau }}</p>
+          @if (formation.categories.length) {
+            <div class="mb-4">
+              <h4 class="border-bottom pb-2">Catégories</h4>
+              <div class="d-flex flex-wrap gap-2">
+                @for (categorie of formation.categories; track categorie) {
+                  <span class="badge bg-primary">{{ categorie }}</span>
+                }
+              </div>
+            </div>
+          }
+          @if (formation.tags.length) {
+            <div class="mb-4">
+              <h4 class="border-bottom pb-2">Tags</h4>
+              <div class="d-flex flex-wrap gap-2">
+                @for (tag of formation.tags; track tag) {
+                  <span class="badge bg-secondary">{{ tag }}</span>
+                }
+              </div>
+            </div>
+          }
+
+          <button class="btn btn-primary btn-sm me-2" (click)="editFormation(formation)">Modifier</button>
+          <button class="btn btn-danger btn-sm" (click)="deleteFormation(formation.id)">Supprimer</button>
+        </li>
+      }
+    </ul>
+  
+    <h3 class="mt-4">
+      @if (isEditing) {
+        Modifier Formation
+      } @else {
+        Ajouter Formation
+      }
+    </h3>
+    <form (ngSubmit)="isEditing ? updateFormation() : addFormation()">
+      <div class="form-group">
+        <label for="titre">Titre</label>
+        <input type="text" class="form-control" id="titre" [(ngModel)]="selectedFormation.titre" name="titre" required>
+      </div>
+      <div class="form-group">
+        <label for="description">Description</label>
+        <textarea class="form-control" id="description" [(ngModel)]="selectedFormation.description" name="description" required></textarea>
+      </div>
+      <div class="form-group">
+        <label for="duree">Durée (heures)</label>
+        <input type="number" class="form-control" id="duree" [(ngModel)]="selectedFormation.duree" name="duree" required>
+      </div>
+      <div class="form-group">
+        <label for="programme">Programme</label>
+        <textarea class="form-control" id="programme" [(ngModel)]="selectedFormation.programme" name="programme" required></textarea>
+      </div>
+      <div class="form-group">
+        <label for="niveau">Niveau</label>
+        <input type="text" class="form-control" id="niveau" [(ngModel)]="selectedFormation.niveau" name="niveau" required>
+      </div>
+      <div class="form-group">
+        <label for="tags">Tags</label>
+        <input type="text" class="form-control" id="tags" [(ngModel)]="tagsAsString" name="tags" required>
+      </div>
+      <div class="form-group">
+        <label for="categories">Catégories</label>
+        <input type="text" class="form-control" id="categories" [(ngModel)]="categoriesAsString" name="categories" required>
+      </div>
+      <button type="submit" class="btn btn-primary mt-2">
+        @if (isEditing) { Modifier } 
+        @else { Ajouter }
+      </button>
+    </form>
+  </div>

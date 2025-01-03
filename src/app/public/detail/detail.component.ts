@@ -4,18 +4,18 @@ import { ActivatedRoute } from '@angular/router';
 import { FormationsService } from '../../services/formation.service';
 import { Session } from '../../public/session';
 import { Sessionformation } from '../../public/sessionformation';
+import { RouterModule } from '@angular/router';
+
 @Component({
   selector: 'app-detail',
   standalone: true,
-  imports: [NavComponent],
+  imports: [NavComponent,RouterModule],
   templateUrl: './detail.component.html',
   styleUrls: ['./detail.component.css'],
 })
 export class DetailComponent {
   formation: Session | null = null;
   sessions: Sessionformation[] = [];
-  isLoading = true;
-  error: string | null = null;
 
   constructor(
     private route: ActivatedRoute,
@@ -32,8 +32,6 @@ export class DetailComponent {
   }
 
   private loadFormationData(id: string): void {
-    this.isLoading = true;
-    this.error = null;
 
     this.formationsService.getFormationById(id).subscribe({
       next: (formation) => {
@@ -41,8 +39,6 @@ export class DetailComponent {
         this.loadSessions(formation.id);
       },
       error: (err) => {
-        this.error = 'Erreur lors du chargement de la formation';
-        this.isLoading = false;
         console.error('Error loading formation:', err);
       }
     });
@@ -52,11 +48,8 @@ export class DetailComponent {
     this.formationsService.getSessionsByFormation(formationId).subscribe({
       next: (sessions) => {
         this.sessions = sessions;
-        this.isLoading = false;
       },
       error: (err) => {
-        this.error = 'Erreur lors du chargement des sessions';
-        this.isLoading = false;
         console.error('Error loading sessions:', err);
       }
     });

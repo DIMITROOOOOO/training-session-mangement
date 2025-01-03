@@ -1,17 +1,6 @@
 export class Candidat {
-    public get motDePasse(): string {
-        return this._motDePasse;
-    }
-    public set motDePasse(value: string) {
-        this._motDePasse = value;
-    }
-    public get photo(): string {
-        return this._photo;
-    }
-    public set photo(value: string) {
-        this._photo = value;
-    }
-    public get carteIdentite(): string {
+    
+       public get carteIdentite(): string {
         return this._carteIdentite;
     }
     public set carteIdentite(value: string) {
@@ -47,8 +36,6 @@ export class Candidat {
       private _prenom: string,
       private _email: string,
       private _carteIdentite: string,
-      private _photo: string,  
-      private _motDePasse: string 
     ) {}
   }
   

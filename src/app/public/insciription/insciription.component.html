@@ -1,0 +1,46 @@
+<app-nav></app-nav>
+<div class="container mt-4">
+<h2>S'inscrire</h2>
+<form id="addForm" (ngSubmit)="addcondidat(f)" #f="ngForm">
+  <div class="mb-3">
+    <label for="id" class="form-label">ID*</label>
+    <input type="text" class="form-control" id="id" name="id" ngModel #id="ngModel" required />
+    @if (id.invalid && id.touched) {
+      <span class="error">Ce champ est obligatoire!</span>
+    }
+  </div>
+  <div class="mb-3">
+    <label for="nom" class="form-label">Nom*</label>
+    <input type="text" class="form-control" id="nom" name="nom" ngModel #nom="ngModel" required />
+    @if (nom.invalid && nom.touched) {
+      <span class="error">Ce champ est obligatoire!</span>
+    }
+  </div>
+  <div class="mb-3">
+    <label for="prenom" class="form-label">Prénom*</label>
+    <input type="text" class="form-control" id="prenom" name="prenom" ngModel #prenom="ngModel" required />
+    @if (prenom.invalid && prenom.touched) {
+      <span class="error">Ce champ est obligatoire!</span>
+    }
+  </div>
+  <div class="mb-3">
+    <label for="email" class="form-label">Email*</label>
+    <input type="email" class="form-control" id="email" name="email" ngModel #email="ngModel" required />
+    @if (email.invalid && email.touched) {
+      <span class="error">Ce champ est obligatoire!</span>
+    }
+  </div>
+  <div class="mb-3">
+    <label for="cin" class="form-label">CIN*</label>
+    <input type="text" class="form-control" id="cin" name="cin" ngModel #cin="ngModel" required />
+    @if (cin.invalid && cin.touched) {
+      <span class="error">Ce champ est obligatoire!</span>
+    }
+  </div>
+  <button type="submit" id="btnValidAdd" class="btn btn-primary" [disabled]="f.invalid">
+    
+    Valider
+  </button>
+  <div>* : champ obligatoire</div>
+</form>
+</div>

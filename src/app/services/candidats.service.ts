@@ -1,9 +1,17 @@
 import { Injectable } from '@angular/core';
+import { HttpClient , HttpHeaders} from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { Candidat } from '../public/candidates';
 
 @Injectable({
   providedIn: 'root'
 })
-export class CandidatsService {
+export class CandidatService {
+  private apiUrl = 'http://localhost:3000/candidateur';
+  
+  constructor(private http: HttpClient) {}
 
-  constructor() { }
+  addCandidat(candidat: Candidat): Observable<Candidat> {
+    return this.http.post<Candidat>(this.apiUrl, candidat);
+  }
 }

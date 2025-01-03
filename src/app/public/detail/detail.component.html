@@ -1,16 +1,6 @@
 <app-nav></app-nav>
 <div class="container mt-4">
-  @if (isLoading) {
-    <div class="text-center">
-      <div class="spinner-border text-primary" role="status">
-        <span class="visually-hidden">Chargement...</span>
-      </div>
-    </div>
-  } @else if (error) {
-    <div class="alert alert-danger">
-      {{ error }}
-    </div>
-  } @else if (formation) {
+  @if (formation) {
     <div class="card">
       <div class="card-header bg-primary text-white">
         <h2 class="mb-0">{{ formation.titre }}</h2>
@@ -57,7 +47,9 @@
             </div>
           </div>
         }
+       
       </div>
     </div>
+    <a class="btn btn-primary mt-2" [routerLink]="['/insciription', formation.id]">Inscription</a>
   }
 </div>

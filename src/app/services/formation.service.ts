@@ -24,8 +24,8 @@ export class FormationsService {
   getFormationsByTag(tag: string): Observable<Session[]> {
     return this.http.get<Session[]>(`${this.formationsUrl}?tags_like=${tag}`);
   }
-  addFormation(body: any) {
-    return this.http.post(this.formationsUrl, body);
+  addFormation(body: Session): Observable<Session> {
+    return this.http.post<Session>(this.formationsUrl, body);
   }
 
   getAllSessions(): Observable<Sessionformation[]> {
@@ -34,5 +34,12 @@ export class FormationsService {
 
   getSessionsByFormation(formationId: number): Observable<Sessionformation[]> {
     return this.http.get<Sessionformation[]>(`${this.sessionsUrl}?formationId=${formationId}`);
+  }
+  updateFormation(formation: Session): Observable<Session> {
+    return this.http.put<Session>(`${this.formationsUrl}/${formation.id}`, formation);
+  }
+
+  deleteFormation(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.formationsUrl}/${id}`);
   }
 }
