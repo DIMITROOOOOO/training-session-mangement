@@ -8,9 +8,8 @@ import { Sessionformation } from '../public/sessionformation';
   providedIn: 'root'
 })
 export class FormationsService {
-  private readonly baseUrl: string = 'http://localhost:3000';
-  private readonly formationsUrl: string = `${this.baseUrl}/Session`;
-  private readonly sessionsUrl: string = `${this.baseUrl}/Sessionformation`;
+  private readonly formationsUrl: string = `http://localhost:3000/Session`;
+  private readonly sessionsUrl: string = `http://localhost:3000/Sessionformation`;
 
   constructor(private http: HttpClient) { }
 

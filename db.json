@@ -30,6 +30,21 @@
       "categories": [
         "Développement Web coter serveur"
       ]
+    },{
+      "id": "3",
+      "titre": "Formation machine learning",
+      "description": "Formation complete sur lenear regression et logistic regression",
+      "duree": 60,
+      "programme": "Programme detaillé...",
+      "niveau": "Intermediaire",
+      "tags": [
+        "AI",
+        "Machine Learning",
+        "python"
+      ],
+      "categories": [
+        "Data Science"
+      ]
     }
   ],
   "Sessionformation": [
@@ -115,8 +130,32 @@
   "formateurs": [
     {
       "id": 1,
-      "nom": "mtir",
-      "prenom": "mehdi"
+      "nom": "metir",
+      "prenom": "mehdi",
+      "email": "metir@gmail.com",
+      "phoneNumber": "000000000",
+      "carteIdentite": "00000000",
+      "photo": "photo2.jpg",
+      "cv": "cv2.pdf",
+      "specialites": [
+        "typescript",
+        "angular"
+      ]
+    },
+    {
+      "id": 2,
+      "nom": "cherif",
+      "prenom": "nithal",
+      "email": "cherif@gmail.com",
+      "phoneNumber": "123456789",
+      "carteIdentite": "123456789",
+      "photo": "photo1.jpg",
+      "cv": "cv1.pdf",
+      "specialites": [
+        "php",
+        "poo"
+      ]
     }
+    
   ]
 }

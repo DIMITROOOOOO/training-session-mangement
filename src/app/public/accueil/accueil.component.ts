@@ -32,12 +32,12 @@ export class AccueilComponent implements OnInit {
         this.extractCategories();
       },
       error: (err) => {
-        console.error('Error fetching formations:', err);
+        console.error('Error fel rechercher nta3 les formattion :', err);
       }
     });
   }
 
-  private extractCategories(): void {
+   extractCategories(): void {
     const allCategories = this.formations
       .map(formation => formation.categories)
       .flat();
@@ -48,11 +48,11 @@ export class AccueilComponent implements OnInit {
     return this.sessions.filter(session => session.formation.id === formationId);
   }
 
-  findFirstFormationByCategorie(cat: string): Session | undefined {
-    return this.formations.find((form) => form.categories.includes(cat));
+  findFormationByCategorie(cat: string): Session | undefined {
+    return this.formations.find((formations) => formations.categories.includes(cat));
   }
 
   findAllFormationByCategorie(cat: string): Session[] {
-    return this.formations.filter((form) => form.categories.includes(cat));
+    return this.formations.filter((formations) => formations.categories.includes(cat));
   }
 }

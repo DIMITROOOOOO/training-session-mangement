@@ -1,1 +1,103 @@
-<p>gestion-formateur works!</p>
+<div class="container mt-4">
+    <h2>Gestion des Formateurs</h2>
+    <ul class="list-group">
+      @for (formateur of formateurs; track formateur.id) {
+        <li class="list-group-item">
+          <div class="row">
+            <div class="col-md-3">
+              @if (formateur.photo) {
+                <img [src]="formateur.photo" alt="Photo formateur" class="img-fluid rounded mb-2">
+              }
+            </div>
+            <div class="col-md-9">
+              <h4>{{ formateur.nom }} {{ formateur.prenom }}</h4>
+              <p>Email: {{ formateur.email }}</p>
+              <p>Téléphone: {{ formateur.phoneNumber }}</p>
+              @if (formateur.specialites.length) {
+                <div class="mb-3">
+                  <h5 class="border-bottom pb-2">Spécialités</h5>
+                  <div class="d-flex flex-wrap gap-2">
+                    @for (specialite of formateur.specialites; track specialite) {
+                      <span class="badge bg-primary">{{ specialite }}</span>
+                    }
+                  </div>
+                </div>
+              }
+              <div class="mt-2">
+                <button class="btn btn-primary btn-sm me-2" (click)="editFormateur(formateur)">
+                  Modifier
+                </button>
+                <button class="btn btn-danger btn-sm" (click)="deleteFormateur(formateur.id)">
+                  Supprimer
+                </button>
+              </div>
+            </div>
+          </div>
+        </li>
+      }
+    </ul>
+  
+    <h3 class="mt-4">
+      @if (isEditing) {
+        Modifier Formateur
+      } @else {
+        Ajouter Formateur
+      }
+    </h3>
+    <form (ngSubmit)="isEditing ? updateFormateur() : addFormateur()">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="mb-3">
+            <label for="nom" class="form-label">Nom</label>
+            <input type="text" class="form-control" id="nom" [(ngModel)]="selectedFormateur.nom" name="nom" required>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="mb-3">
+            <label for="prenom" class="form-label">Prénom</label>
+            <input type="text" class="form-control" id="prenom" [(ngModel)]="selectedFormateur.prenom" name="prenom" required>
+          </div>
+        </div>
+      </div>
+  
+      <div class="row">
+        <div class="col-md-6">
+          <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" class="form-control" id="email" [(ngModel)]="selectedFormateur.email" name="email" required>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="mb-3">
+            <label for="phoneNumber" class="form-label">Téléphone</label>
+            <input type="tel" class="form-control" id="phoneNumber" [(ngModel)]="selectedFormateur.phoneNumber" name="phoneNumber" required>
+          </div>
+        </div>
+      </div>
+  
+      <div class="mb-3">
+        <label for="carteIdentite" class="form-label">Numéro Carte d'Identité</label>
+        <input type="text" class="form-control" id="carteIdentite" [(ngModel)]="selectedFormateur.carteIdentite" name="carteIdentite" required>
+      </div>
+  
+      <div class="mb-3">
+        <label for="photo" class="form-label">URL Photo</label>
+        <input type="text" class="form-control" id="photo" [(ngModel)]="selectedFormateur.photo" name="photo">
+      </div>
+  
+      <div class="mb-3">
+        <label for="cv" class="form-label">URL CV</label>
+        <input type="text" class="form-control" id="cv" [(ngModel)]="selectedFormateur.cv" name="cv">
+      </div>
+  
+      <div class="mb-3">
+        <label for="specialites" class="form-label">Spécialités</label>
+        <input type="text" class="form-control" id="specialites" [(ngModel)]="specialitesAsString" name="specialites" required>
+      </div>
+  
+      <button type="submit" class="btn btn-primary">
+        @if (isEditing) { Modifier } 
+        @else { Ajouter }
+      </button>
+    </form>
+  </div>

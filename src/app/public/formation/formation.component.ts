@@ -30,16 +30,11 @@ export class FormationComponent implements OnInit {
   searchFormations(): void {
     const keyword = this.searchKeyword.toLowerCase();
 
-    if (!keyword) {
-      this.searchResults = []; 
-      return;
-    }
-
     this.searchResults = this.formations.filter((formation) =>
       formation.tags.some((tag) => tag.toLowerCase().includes(keyword))
     );
-    console.log('Search keyword:', keyword);
-    console.log('Search results:', this.searchResults);
+    console.log('tag eli ktbto :', keyword);
+    console.log('resultat:', this.searchResults);
 
   }
   
